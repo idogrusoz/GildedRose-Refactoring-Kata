@@ -13,4 +13,11 @@ class BackstagePassesTest {
         backstagePasses.update();
         assertEquals(11, backstagePasses.getQuality());
     }
+
+    @Test
+    void givenBackstagePassesForAConcertToBeHeldSoon_whenUpdated_thenItIncreasesDoubleInQuality() {
+        BackstagePasses backstagePasses = new BackstagePasses(new Item("Backstage passes test", BackstagePasses.CONCERT_IS_SOON, 20));
+        backstagePasses.update();
+        assertEquals(22, backstagePasses.getQuality());
+    }
 }
