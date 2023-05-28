@@ -5,15 +5,20 @@ import com.gildedrose.Item;
 public class BaseItem {
     private final Item item;
     protected final static int MIN_QUALITY = 0;
+    protected final static int MAX_QUALITY = 50;
+
     public BaseItem(Item item) {
         validate(item);
         this.item = item;
     }
 
     private void validate(Item item) {
-        if(item.quality < MIN_QUALITY) {
+        if(item.quality < MIN_QUALITY || item.quality > MAX_QUALITY) {
             throw new IllegalArgumentException(
-                "Item has a quality out of accepted boundaries. Minimum acceptable quality is "
+                "Item has a quality out of accepted boundaries. Quality value must be between "
+                    + MIN_QUALITY
+                    + " and "
+                    + MAX_QUALITY
                     +  " but received "
                     + item.quality
             );
@@ -42,7 +47,11 @@ public class BaseItem {
     }
 
     public void setQuality(int quality) {
-        item.quality = Math.max(quality, MIN_QUALITY);
+        item.quality = keepQualityInAcceptableRange(quality);
+    }
+
+    private static int keepQualityInAcceptableRange(int quality) {
+        return Math.min(Math.max(quality, MIN_QUALITY), MAX_QUALITY);
     }
 
     private void updateQuality() {
@@ -53,7 +62,7 @@ public class BaseItem {
         return item.sellIn < 0;
     }
 
-    private int qualityChange() {
+    protected int qualityChange() {
         return isExpired() ? -2 : -1;
     }
 }
