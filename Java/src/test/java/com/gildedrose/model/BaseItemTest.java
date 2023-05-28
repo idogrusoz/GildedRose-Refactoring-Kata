@@ -50,4 +50,11 @@ class BaseItemTest {
         BaseItem testItem = new BaseItem(new Item("test_item", -1, 10));
         assertTrue(testItem.isExpired());
     }
+
+    @Test
+    void givenAnExpiredBaseItem_whenUpdated_thenQualityDecrementsByTwo() {
+        BaseItem testItem = new BaseItem(new Item("test_item", 0, 10));
+        testItem.update();
+        assertEquals(8, testItem.getQuality());
+    }
 }
