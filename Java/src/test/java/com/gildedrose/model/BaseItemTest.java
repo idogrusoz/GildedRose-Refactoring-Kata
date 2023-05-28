@@ -30,4 +30,11 @@ class BaseItemTest {
         BaseItem baseItem = new BaseItem(new Item("test_item", 10, 20));
         assertEquals(20, baseItem.getQuality());
     }
+
+    @Test
+    void itMutatesTheQualityValueOfTheItem() {
+        BaseItem baseItem = new BaseItem(new Item("test_item", 10, 20));
+        baseItem.setQuality(19);
+        assertEquals(19, baseItem.getQuality());
+    }
 }
