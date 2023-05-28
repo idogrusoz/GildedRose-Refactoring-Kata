@@ -14,4 +14,11 @@ class LegendaryItemTest {
         assertEquals(0, legendaryItem.getSellIn());
     }
 
+    @Test
+    void givenALegendaryItem_whenUpdated_thenQualityRemainsTheSame() {
+        LegendaryItem legendaryItem = new LegendaryItem(new Item("Sulfuras test item", 0, 10));
+        legendaryItem.update();
+        assertEquals(10, legendaryItem.getQuality());
+    }
+
 }

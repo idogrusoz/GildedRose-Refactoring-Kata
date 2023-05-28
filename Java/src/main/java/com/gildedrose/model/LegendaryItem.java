@@ -12,4 +12,8 @@ public class LegendaryItem extends BaseItem{
     protected void updateSellIn() {
         //Legendary item never has to be sold
     }
+
+    protected int qualityChange() {
+        return 0;
+    }
 }
