@@ -21,4 +21,10 @@ class LegendaryItemTest {
         assertEquals(10, legendaryItem.getQuality());
     }
 
+    @Test
+    void givenLegendaryItem_whenCreated_thenItHasSpecificMaxQuality() {
+        LegendaryItem legendaryItem = new LegendaryItem(new Item("test_item", 10, LegendaryItem.LEGENDARY_MAX_QUALITY));
+        assertEquals(LegendaryItem.LEGENDARY_MAX_QUALITY, legendaryItem.getQuality());
+    }
+
 }

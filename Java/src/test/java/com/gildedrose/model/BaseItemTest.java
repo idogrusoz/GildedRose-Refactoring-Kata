@@ -79,6 +79,6 @@ class BaseItemTest {
 
     @Test
     void givenAnItemWithMoreThanMaximumQuality_whenCreated_thenAnExceptionIsThrown() {
-        assertThrows(IllegalArgumentException.class, () -> new BaseItem(new Item("test_item", -1, BaseItem.MAX_QUALITY + 1)));
+        assertThrows(IllegalArgumentException.class, () -> new BaseItem(new Item("test_item", -1, BaseItem.DEFAULT_MAX_QUALITY + 1)));
     }
 }

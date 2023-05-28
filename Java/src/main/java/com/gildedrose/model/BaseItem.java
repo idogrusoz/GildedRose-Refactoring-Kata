@@ -5,7 +5,7 @@ import com.gildedrose.Item;
 public class BaseItem {
     private final Item item;
     protected final static int MIN_QUALITY = 0;
-    protected final static int MAX_QUALITY = 50;
+    protected final static int DEFAULT_MAX_QUALITY = 50;
 
     public BaseItem(Item item) {
         validate(item);
@@ -13,16 +13,20 @@ public class BaseItem {
     }
 
     private void validate(Item item) {
-        if(item.quality < MIN_QUALITY || item.quality > MAX_QUALITY) {
+        if(item.quality < MIN_QUALITY || item.quality > getMaxQuality()) {
             throw new IllegalArgumentException(
-                "Item has a quality out of accepted boundaries. Quality value must be between "
+                "Item has a quality out of accepted boundaries. Quality value fot this type of item must be between "
                     + MIN_QUALITY
                     + " and "
-                    + MAX_QUALITY
+                    + getMaxQuality()
                     +  " but received "
                     + item.quality
             );
         }
+    }
+
+    protected int getMaxQuality() {
+        return DEFAULT_MAX_QUALITY;
     }
 
     public int getSellIn() {
@@ -50,8 +54,8 @@ public class BaseItem {
         item.quality = keepQualityInAcceptableRange(quality);
     }
 
-    private static int keepQualityInAcceptableRange(int quality) {
-        return Math.min(Math.max(quality, MIN_QUALITY), MAX_QUALITY);
+    private int keepQualityInAcceptableRange(int quality) {
+        return Math.min(Math.max(quality, MIN_QUALITY), getMaxQuality());
     }
 
     private void updateQuality() {
