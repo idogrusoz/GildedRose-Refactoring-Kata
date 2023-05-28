@@ -10,7 +10,9 @@ public class BackstagePasses extends BaseItem{
     }
 
     protected int qualityChange() {
-        if (isConcertImminent()) {
+        if (isExpired()){
+            return -1 * getQuality();
+        } else if (isConcertImminent()) {
             return 3;
         } else if(isConcertSoon()) {
             return 2;

@@ -34,4 +34,11 @@ class BackstagePassesTest {
         backstagePasses.update();
         assertEquals(BaseItem.DEFAULT_MAX_QUALITY, backstagePasses.getQuality());
     }
+
+    @Test
+    void givenExpiredBackstagePasses_whenUpdated_thenQualityIsZero() {
+        BackstagePasses backstagePasses = new BackstagePasses(new Item("Backstage passes test", 0, 10));
+        backstagePasses.update();
+        assertEquals(0, backstagePasses.getQuality());
+    }
 }
