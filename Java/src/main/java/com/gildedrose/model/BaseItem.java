@@ -5,6 +5,8 @@ import com.gildedrose.Item;
 public class BaseItem {
     private final Item item;
     protected final static int MIN_QUALITY = 0;
+    protected final static int MAX_QUALITY = 50;
+
     public BaseItem(Item item) {
         validate(item);
         this.item = item;
@@ -42,7 +44,11 @@ public class BaseItem {
     }
 
     public void setQuality(int quality) {
-        item.quality = Math.max(quality, MIN_QUALITY);
+        item.quality = keepQualityInAcceptableRange(quality);
+    }
+
+    private static int keepQualityInAcceptableRange(int quality) {
+        return Math.min(Math.max(quality, MIN_QUALITY), MAX_QUALITY);
     }
 
     private void updateQuality() {

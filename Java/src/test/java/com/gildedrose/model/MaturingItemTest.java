@@ -13,4 +13,11 @@ class MaturingItemTest {
         maturingItem.update();
         assertEquals(11, maturingItem.getQuality());
     }
+
+    @Test
+    void givenMaturingItemWithMaxQuality_whenUpdated_thenQualityRemainsTheSame() {
+        MaturingItem maturingItem = new MaturingItem(new Item("Aged Brie test", 10, BaseItem.MAX_QUALITY));
+        maturingItem.update();
+        assertEquals(BaseItem.MAX_QUALITY, maturingItem.getQuality());
+    }
 }
