@@ -25,4 +25,9 @@ class BaseItemTest {
         testItem.update();
         assertEquals(9, testItem.getSellIn());
     }
+    @Test
+    void itEncapsulatesTheQualityValueOfTheItem() {
+        BaseItem baseItem = new BaseItem(new Item("test_item", 10, 20));
+        assertEquals(20, baseItem.getQuality());
+    }
 }

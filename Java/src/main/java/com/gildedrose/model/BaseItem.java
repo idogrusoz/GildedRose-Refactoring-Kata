@@ -23,5 +23,9 @@ public class BaseItem {
     private void decrementSellIn() {
         setSellIn(getSellIn() - 1);
     }
+
+    public int getQuality() {
+        return item.quality;
+    }
 }
 
