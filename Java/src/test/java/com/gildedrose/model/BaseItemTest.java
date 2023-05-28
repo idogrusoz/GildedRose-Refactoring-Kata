@@ -71,4 +71,9 @@ class BaseItemTest {
         testItem.update();
         assertEquals(0, testItem.getQuality());
     }
+
+    @Test
+    void givenAnItemWithLessThanMinimumQuality_whenCreated_thenAnExceptionIsThrown() {
+        assertThrows(IllegalArgumentException.class, () -> new BaseItem(new Item("test_item", -1, BaseItem.MIN_QUALITY - 1)));
+    }
 }
