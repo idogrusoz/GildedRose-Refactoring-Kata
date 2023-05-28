@@ -53,7 +53,7 @@ public class BaseItem {
         return item.sellIn < 0;
     }
 
-    private int qualityChange() {
+    protected int qualityChange() {
         return isExpired() ? -2 : -1;
     }
 }
