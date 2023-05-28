@@ -13,9 +13,12 @@ public class BaseItem {
     }
 
     private void validate(Item item) {
-        if(item.quality < MIN_QUALITY) {
+        if(item.quality < MIN_QUALITY || item.quality > MAX_QUALITY) {
             throw new IllegalArgumentException(
-                "Item has a quality out of accepted boundaries. Minimum acceptable quality is "
+                "Item has a quality out of accepted boundaries. Quality value must be between "
+                    + MIN_QUALITY
+                    + " and "
+                    + MAX_QUALITY
                     +  " but received "
                     + item.quality
             );
