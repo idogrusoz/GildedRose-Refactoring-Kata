@@ -20,4 +20,18 @@ class BackstagePassesTest {
         backstagePasses.update();
         assertEquals(22, backstagePasses.getQuality());
     }
+
+    @Test
+    void givenBackstagePassesForAnImminentConcert_whenUpdated_thenItIncreasesTripleInQuality() {
+        BackstagePasses backstagePasses = new BackstagePasses(new Item("Backstage passes test", BackstagePasses.CONCERT_IS_IMMINENT, 10));
+        backstagePasses.update();
+        assertEquals(13, backstagePasses.getQuality());
+    }
+
+    @Test
+    void givenBackstagePasses_whenUpdated_thenItNeverSurpassesTheMaxQuality() {
+        BackstagePasses backstagePasses = new BackstagePasses(new Item("Backstage passes test", BackstagePasses.CONCERT_IS_IMMINENT, BaseItem.DEFAULT_MAX_QUALITY - 1));
+        backstagePasses.update();
+        assertEquals(BaseItem.DEFAULT_MAX_QUALITY, backstagePasses.getQuality());
+    }
 }
