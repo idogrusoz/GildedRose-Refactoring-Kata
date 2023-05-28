@@ -34,11 +34,11 @@ public class BaseItem {
     }
 
     public void update() {
-        decrementSellIn();
+        updateSellIn();
         updateQuality();
     }
 
-    private void decrementSellIn() {
+    protected void updateSellIn() {
         setSellIn(getSellIn() - 1);
     }
 
