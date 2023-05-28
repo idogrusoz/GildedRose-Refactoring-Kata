@@ -37,4 +37,11 @@ class BaseItemTest {
         baseItem.setQuality(19);
         assertEquals(19, baseItem.getQuality());
     }
+
+    @Test
+    void givenABaseItem_whenUpdated_thenQualityDecrements() {
+        BaseItem testItem = new BaseItem(new Item("test_item", 10, 10));
+        testItem.update();
+        assertEquals(9, testItem.getQuality());
+    }
 }
