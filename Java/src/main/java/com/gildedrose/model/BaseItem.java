@@ -7,5 +7,9 @@ public class BaseItem {
     public BaseItem(Item item) {
         this.item = item;
     }
+
+    public int getSellIn() {
+        return item.sellIn;
+    }
 }
 
