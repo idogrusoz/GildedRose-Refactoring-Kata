@@ -101,4 +101,12 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
     }
+
+    @Test
+    void givenConjuredItems_whenUpdated_thenItLosesQualityTwiceFaster() {
+        Item[] items = new Item[] { new Item("Conjured apple", 10, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(8, app.items[0].quality);
+    }
 }
