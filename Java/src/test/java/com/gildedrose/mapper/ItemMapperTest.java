@@ -1,10 +1,7 @@
 package com.gildedrose.mapper;
 
 import com.gildedrose.Item;
-import com.gildedrose.model.BackstagePasses;
-import com.gildedrose.model.BaseItem;
-import com.gildedrose.model.LegendaryItem;
-import com.gildedrose.model.MaturingItem;
+import com.gildedrose.model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,5 +30,11 @@ class ItemMapperTest {
     void givenBackstagePasses_whenMapped_thenItReturnsBackStagePasses() {
         BaseItem testItem = ItemMapper.map(new Item("Backstage passes test item", 10, 10));
         assertEquals(BackstagePasses.class, testItem.getClass());
+    }
+
+    @Test
+    void givenConjuredItems_whenMapped_thenItReturnsConjuredItems() {
+        BaseItem testItem = ItemMapper.map(new Item("Conjured test item", 10, 10));
+        assertEquals(ConjuredItem.class, testItem.getClass());
     }
 }
